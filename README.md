@@ -19,29 +19,22 @@ flask --app server run
 ```
 ---
 ## Structure
-### 1. `/make-stores`
+### 1. `/what`
 To receive the story request. 
 #### The example of JSON request
 ```json
 {
-    "word": "French Pizza Restaurant",
-    "n_sentences": 3
+    "question": "a man named neo tried to find out if he hs in a simulation",
+    "topic": "movie"
 }
 ```
 #### The example of JSON response
 ```json
-[
-    {
-        "id": 1,
-        "sentence": "French protesters carry french flags and walk to the french restaurant."
-    },
-    {
-        "id": 2,
-        "sentence": "A frenchman is eating a pizza in the restaurant in Paris."
-    },
-    {
-        "id": 3,
-        "sentence": "A boy is eating a big camembert pizza with his mother in pizza restaurant."
-    }
-]
+{
+    "answer": "The matrix"
+}
+```
+#### Locally test with curl
+```shell
+curl -X post localhost:PORT/what -H 'Content-Type: application/json' -d ‘{question: “a man named neo tried to find out if he hs in a simulation”, topic: “movie”}’
 ```
