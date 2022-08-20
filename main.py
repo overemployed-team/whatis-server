@@ -32,10 +32,10 @@ def what_answer(prompt):
 @app.route('/what', methods=['POST'])
 def what_is():
     content = request.json
-    prompt = what_prompt(content)
+    prompt = what_prompt(content)    
     response = [
         {
-            "answer": prompt['topic']+': '+what_answer(prompt)
+            "answer": content['topic']+': '+what_answer(prompt)            
         }
     ]
     return jsonify(response)
