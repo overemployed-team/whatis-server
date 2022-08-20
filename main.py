@@ -36,7 +36,7 @@ def what_is():
     prompt = what_prompt(content)    
     response = [
         {
-            "answer": what_answer(prompt)            
+            "answer": what_answer(prompt)
         }
     ]
     return jsonify(response)
@@ -53,6 +53,19 @@ def movie_generate():
         {
             "title": row.iloc()[0].title,
             "decriiption": row.iloc()[0].overview
+        }
+    ]
+    return jsonify(response)
+
+
+@app.route('/isSame', methods=['POST'])
+def is_same():
+    content = request.json
+    user = content['user']
+    original = content['original']
+    response = [
+        {
+            "is_same": True
         }
     ]
     return jsonify(response)
