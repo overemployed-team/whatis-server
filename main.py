@@ -16,7 +16,7 @@ def what_prompt(user_prompt):
     return init_phrase+user_prompt['question']+'\nWhat is it?\nA:'
 
 
-def generate_answer(prompt):
+def what_answer(prompt):
     generation = co.generate(
         model='xlarge',
         prompt= prompt,
@@ -32,12 +32,10 @@ def generate_answer(prompt):
 @app.route('/what', methods=['POST'])
 def what_is():
     content = request.json
-    print(content)
-    # TODO[]: get the question and tell the answer to response
     prompt = what_prompt(content)
     response = [
         {
-            "answer": generate_answer(prompt)
+            "answer": prompt['topic']+': '+what_answer(prompt)
         }
     ]
     return jsonify(response)
