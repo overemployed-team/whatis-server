@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import cohere
 import os
+import pandas as pd
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -40,10 +41,26 @@ def what_is():
     ]
     return jsonify(response)
 
+
+@app.route('/generate', methods=['POST'])
+def movie_generate():
+    df = pd.read_csv('tmdb_5000_movies_clean.csv')
+    # Get random row preferrly to popular
+    row = df.sample(n=1, weights=df['antipop'])
+    print()
+    print(row.iloc()[0].overview)
+    response = [
+        {
+            "title": row.iloc()[0].title,
+            "decriiption": row.iloc()[0].overview
+        }
+    ]
+    return jsonify(response)
+
+
 if __name__ == "__main__":
     app.run(
         debug=True,
         host=os.environ.get("HOST", "api.whatisit.app"),
         port=int(os.environ.get("PORT", 8080))
         )
-
