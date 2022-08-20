@@ -35,7 +35,7 @@ def what_is():
     prompt = what_prompt(content)    
     response = [
         {
-            "answer": content['topic']+': '+what_answer(prompt)            
+            "answer": what_answer(prompt)            
         }
     ]
     return jsonify(response)
