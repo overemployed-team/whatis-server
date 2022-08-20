@@ -20,5 +20,9 @@ def what_is():
     return jsonify(fake_response)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="api.whatisit.app", port=int(os.environ.get("PORT", 8080)))
+    app.run(
+        debug=True,
+        host=os.environ.get("HOST", "api.whatisit.app"),
+        port=int(os.environ.get("PORT", 8080))
+        )
 
