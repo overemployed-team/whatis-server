@@ -36,5 +36,7 @@ To receive the story request.
 ```
 #### Locally test with curl
 ```shell
-curl -X post localhost:PORT/what -H 'Content-Type: application/json' -d ‘{question: “a man named neo tried to find out if he hs in a simulation”, topic: “movie”}’
+curl -X POST "https://whatis-server-xlqc3o3mha-ew.a.run.app/what"\
+   -H 'Content-Type: application/json'\
+   -d '{"question":"a man who is born in a cave and kidnapped by a monkey","topic":"movie"}'
 ```
