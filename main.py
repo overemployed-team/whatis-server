@@ -42,7 +42,7 @@ def what_is():
     return jsonify(response)
 
 
-@app.route('/generate', methods=['POST'])
+@app.route('/generate', methods=['GET'])
 def movie_generate():
     df = pd.read_csv('tmdb_5000_movies_clean.csv')
     # Get random row preferrly to popular
