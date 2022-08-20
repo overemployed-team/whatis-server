@@ -22,7 +22,7 @@ def generate_answer(prompt):
         prompt= prompt,
         max_tokens=200,
         temperature=1,
-        stop_sequences=["--"],
+        stop_sequences=["--",":"],
         k=0,
         p=0.75
         )
