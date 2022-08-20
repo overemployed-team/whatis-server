@@ -4,7 +4,7 @@ import cohere
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/what', methods=['POST'])
 def what_is():
