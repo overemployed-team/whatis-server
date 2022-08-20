@@ -52,7 +52,7 @@ def movie_generate():
     response = [
         {
             "title": row.iloc()[0].title,
-            "decriiption": row.iloc()[0].overview
+            "description": row.iloc()[0].overview
         }
     ]
     return jsonify(response)
