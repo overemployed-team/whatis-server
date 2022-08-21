@@ -3,6 +3,7 @@ from flask_cors import CORS
 import cohere
 import os
 import pandas as pd
+from difflib import SequenceMatcher
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -58,14 +59,18 @@ def movie_generate():
     return jsonify(response)
 
 
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
+
+
 @app.route('/isSame', methods=['POST'])
 def is_same():
-    content = request.json
-    user = content['user']
+    content = request.json    
     original = content['original']
+    users_guess = content['user']
     response = [
         {
-            "is_same": True
+            "is_same": True if similar(original, users_guess)>0.5 else False
         }
     ]
     return jsonify(response)
