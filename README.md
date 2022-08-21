@@ -1,5 +1,7 @@
-# AutoNFT Marketeer
-Make a word into commercial stories
+# Whatis Server
+
+* Guess the movie title from descriptions
+* Give descriptions of movies for guessing
 ---
 ## Get started
 
